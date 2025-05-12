@@ -4,6 +4,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 30px;
     .logo-icon, .logo-text{
         color: #e60023;
         font-size: 18px;
@@ -11,33 +12,72 @@
     .logo-text{
         font-weight: bold; 
         padding-left: 4px;
-        font-family: "Noto Sans", sans-serif;
         font-weight: 900;
     }
-}
-
-.search-wrapper{
-    width: 70%;
-    line-height: 50px;
-    background-color: #f2f2f2;
-    color: #333333;
-    border: 0;
-    border-radius: 100px;
-    padding-left: 20px;
-    .search{
+    .search-wrapper{
+        width: 70%;
+        line-height: 50px;
+        background-color: #f2f2f2;
+        color: #333333;
         border: 0;
-        background-color: transparent;
-        width: 90%;
+        border-radius: 100px;
         padding-left: 20px;
+        .search{
+            border: 0;
+            background-color: transparent;
+            width: 90%;
+            padding-left: 20px;
+        }
+    }
+    .board-button{
+        line-height: 50px;
+        background-color: #e60023;
+        color: #ffffff;
+        border: 0;
+        border-radius: 100px;
+        width: 15%;
     }
 }
 
-.board-button{
-    line-height: 50px;
-    background-color: #e60023;
-    color: white;
-    border: 0;
-    border-radius: 100px;
-    width: 15%;
-}
 
+
+
+.gallery{
+    .card{
+        width: 220px;
+        height: 400px;
+            .card-image{
+                background-image: url(../img/img1.jpg);
+                width: 100%;
+                height: 360px;
+                background-size: cover;
+                position: relative;
+                margin-bottom: 10px;
+            }
+            .card-menu-button{
+                position: absolute;
+                right: 5px;
+                bottom: 15px;
+                width: 30px;
+                line-height: 30px;
+                text-align: center;
+                border-radius: 50%;
+                background-color: #ffffff;
+            }        
+            .card-meta{
+                display: flex;
+                align-items: center;
+                .avatar{
+                    background-image: url(../img/avatar1.jpg);
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50px;
+                    background-size: cover;
+                    background-position: center;
+                }
+                .description{
+                    margin-left: 10px;
+                }
+            }
+    }
+}

@@ -80,9 +80,8 @@ const image = document.createElement('div');
 image.classList.add('card-image');
 
 // Кнопка "⋯"
-const menuButton = document.createElement('button');
-menuButton.classList.add('card-menu-button');
-menuButton.innerHTML = '⋯';
+const menuButton = document.createElement('i');
+menuButton.classList.add('fa-solid', 'fa-ellipsis','card-menu-button');
 image.append(menuButton);
 
 // Аватар и описание
@@ -94,7 +93,7 @@ avatar.classList.add('avatar');
 
 const description = document.createElement('p');
 description.classList.add('description');
-description.textContent = 'Описание';
+description.textContent = 'Интерьер';
 
 meta.append(avatar, description);
 card.append(image, meta);
