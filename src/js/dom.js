@@ -1,3 +1,6 @@
+import { fetchPhotos } from './api.js';
+
+
 // Получаем корневой контейнер
 const main = document.getElementById('main');
 
@@ -56,41 +59,40 @@ main.append(container);
 
 // ---------- ЗАГРУЗКА ДАННЫХ ----------
 
-fetch('https://6829fe1fab2b5004cb357623.mockapi.io/photos')
-  .then(res => res.json())
-  .then(data => {
-    data.forEach(photo => {
-      // Карточка
-      const card = document.createElement('div');
-      card.classList.add('card');
+fetchPhotos().then(data => {
+  data.forEach(photo => {
+    console.log(photo.avatar);
+    // Карточка
+    const card = document.createElement('div');
+    card.classList.add('card');
 
-      // Изображение
-      const image = document.createElement('div');
-      image.classList.add('card-image');
-      image.style.backgroundImage = `url(${photo.image})`;
+    // Изображение
+    const image = document.createElement('div');
+    image.classList.add('card-image');
+    image.style.backgroundImage = `url(${photo.image})`;
 
-      // Кнопка "⋯"
-      const menuButton = document.createElement('i');
-      menuButton.classList.add('fa-solid', 'fa-ellipsis', 'card-menu-button');
-      image.append(menuButton);
+    // Кнопка "⋯"
+    const menuButton = document.createElement('i');
+    menuButton.classList.add('fa-solid', 'fa-ellipsis', 'card-menu-button');
+    image.append(menuButton);
 
-      // Аватар и описание
-      const meta = document.createElement('div');
-      meta.classList.add('card-meta');
+    // Аватар и описание
+    const meta = document.createElement('div');
+    meta.classList.add('card-meta');
 
-      const avatar = document.createElement('div');
-      avatar.classList.add('avatar');
-      avatar.style.backgroundImage = `url(${photo.avatar})`;
+    const avatar = document.createElement('div');
+    avatar.classList.add('avatar');
+    avatar.style.backgroundImage = `url(${photo.avatar})`;
 
-      const description = document.createElement('p');
-      description.classList.add('description');
-      description.textContent = photo.description;
+    const description = document.createElement('p');
+    description.classList.add('description');
+    description.textContent = photo.description;
 
-      meta.append(avatar, description);
-      card.append(image, meta);
-      gallery.append(card);
-    });
-  })
-  .catch(err => {
-    console.error('Ошибка загрузки данных:', err);
+    meta.append(avatar, description);
+    card.append(image, meta);
+    gallery.append(card);
   });
+});
+
+
+
