@@ -1,1 +1,70 @@
 // модальное окно, появляющееся после нажатия кнопки 'Добавить на доску'
+.board-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+// Стилизованная кнопка "Выбрать доску" 
+.board-button {
+    background-color: white;
+    color: #E60023;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid #E60023;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 200px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.board-button:hover {
+    background-color: #E60023;
+    color: white;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+// Список досок
+.board-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    list-style: none;
+    padding: 8px 0;
+    margin: 5px 0;
+    min-width: 200px;
+    opacity: 0;
+    transform: translateY(-5px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    display: none; 
+    z-index: 10;
+}
+
+//Элементы списка 
+.board-item {
+    padding: 12px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+    transition: background-color 0.3s ease;
+}
+
+.board-item:hover {
+    background-color: #f7f7f7;
+}
+
+//Анимация появления списка 
+.board-list.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
