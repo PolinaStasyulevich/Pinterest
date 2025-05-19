@@ -1,21 +1,11 @@
 // Получаем корневой контейнер
 const main = document.getElementById('main');
 
-
 // Создаём обёртку
 const container = document.createElement('div');
 container.classList.add('container');
 
-
-
-
-
-
-
-
-
 // ---------- ХЕДЕР ----------
-
 const header = document.createElement('header');
 header.classList.add('header');
 
@@ -32,8 +22,6 @@ text.textContent = 'Pinterest';
 
 logo.append(iconLogo, text);
 
-
-
 // Поиск
 const searchWrapper = document.createElement('div');
 searchWrapper.classList.add('search-wrapper');
@@ -46,28 +34,63 @@ search.classList.add('search');
 search.setAttribute('type', 'text');
 search.setAttribute('placeholder', 'Идеи простых блюд на ужин, модных образов и многое другое');
 
+// Восстанавливаем предыдущий поисковый запрос
+const savedSearch = localStorage.getItem('searchQuery');
+if (savedSearch) {
+    search.value = savedSearch;
+}
+
+// Сохраняем поисковой запрос при изменении
+search.addEventListener('input', () => {
+    localStorage.setItem('searchQuery', search.value);
+});
+
 searchWrapper.append(iconSearch, search);
 
-
+// ---------- БУРГЕР-МЕНЮ ----------
+const boardWrapper = document.createElement('div');
+boardWrapper.classList.add('board-wrapper');
 
 // Кнопка "Выбрать доску"
 const boardBtn = document.createElement('button');
 boardBtn.classList.add('board-button');
-boardBtn.textContent = 'Выбрать доску ▼';
 
+// Устанавливаем текст кнопки из `localStorage`, если он есть
+const savedBoard = localStorage.getItem('selectedBoard');
+boardBtn.textContent = savedBoard ? `Выбрано: ${savedBoard} ▼` : 'Выбрать доску ▼';
 
+// Список досок
+const boardList = document.createElement('ul');
+boardList.classList.add('board-list');
 
+const boards = ['Доска 1', 'Доска 2', 'Доска 3'];
+boards.forEach(board => {
+    const listItem = document.createElement('li');
+    listItem.textContent = board;
+    listItem.classList.add('board-item');
+    
+    // Сохраняем выбор в `localStorage`
+    listItem.addEventListener('click', () => {
+        localStorage.setItem('selectedBoard', board);
+        boardBtn.textContent = `Выбрано: ${board} ▼`;
+        boardList.classList.remove('show'); 
+    });
+
+    boardList.appendChild(listItem);
+});
+
+// Обработчик клика с плавным появлением списка
+boardBtn.addEventListener('click', () => {
+    boardList.classList.toggle('show');
+});
+// Добавляем кнопку и список в обертку
+boardWrapper.appendChild(boardBtn);
+boardWrapper.appendChild(boardList);
 
 // Добавляем всё в хедер
-header.append(logo, searchWrapper, boardBtn);
-
-
-
-
-
+header.append(logo, searchWrapper, boardWrapper);
 
 // ---------- GALLERY ----------
-
 const gallery = document.createElement('div');
 gallery.classList.add('gallery');
 
@@ -300,7 +323,17 @@ send.classList.add('send')
 menuButtonAdd.appendChild(send)
 //==================================================
 
-// ---------- СБОРКА ----------
+// Сохраняем последний просмотренный элемент
+card.addEventListener('click', () => {
+    localStorage.setItem('lastViewed', description.textContent);
+});
+
+// Проверяем, есть ли сохранённый просмотренный элемент
+const lastViewed = localStorage.getItem('lastViewed');
+if (lastViewed) {
+    description.textContent = `Последний просмотр: ${lastViewed}`;
+}
+
 
 
 gallery.append(card);
@@ -360,3 +393,4 @@ window.onclick = function(event) {
         claimAdd.style.display = "none";
     }
 }
+
