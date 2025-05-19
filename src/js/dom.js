@@ -81,9 +81,24 @@ image.classList.add('card-image');
 
 // Кнопка "⋯"
 const menuButton = document.createElement('i');
-menuButton.classList.add('fa-solid', 'fa-ellipsis','card-menu-button');
+menuButton.classList.add('fa-solid', 'fa-ellipsis','card-menu-button'); //menuButton
 menuButton.id = 'openModalBtn'
 image.append(menuButton);
+
+// Жалоба на пин
+const claimImage = document.createElement('div')
+claimImage.classList.add('claimImage')
+claimImage.id = 'claimImage'
+
+const claimHeading = document.createElement('h2')
+claimHeading.textContent = 'Жалоба отправлена'
+claimHeading.classList.add('claimHeading')
+claimImage.appendChild(claimHeading)
+
+const cliamDescription = document.createElement('p')
+cliamDescription.textContent = 'Спасибо! Ваши отзывы помогают нам заботиться о безопасности сообщества Pinterest.'
+cliamDescription.classList.add('cliamDescription')
+claimImage.appendChild(cliamDescription)
 
 // Аватар и описание
 const meta = document.createElement('div');
@@ -96,20 +111,14 @@ const description = document.createElement('p');
 description.classList.add('description');
 description.textContent = 'Интерьер';
 
+
+
+
 meta.append(avatar, description);
-card.append(image, meta);
+card.append(image, meta, claimImage);
 
 //==================================================
 
-// const main = document.getElementById('main')
-
-// const container = document.createElement('div')
-// container.classList.add('container')
-
-// const buttonAll = document.createElement('button')
-// buttonAll.textContent = 'Модульное окно'
-// buttonAll.classList.add('button')
-// buttonAll.id = 'openModalBtn'
 
 const divContainer = document.createElement('div')
 // ------Первое модальное окно------------------------------------
@@ -129,7 +138,7 @@ iconAdd.classList.add('fa-solid', 'fa-plus', 'iconModal')
 oneDiv.appendChild(iconAdd)
 
 const add = document.createElement('button')
-add.textContent = 'Добавить на доску'
+add.textContent = ' Добавить на доску'
 add.classList.add('buttonModal')
 add.id = 'addClaim'
 oneDiv.append(add)
@@ -142,7 +151,7 @@ iconHide.classList.add('fa-regular', 'fa-eye-slash', 'iconModal')
 twoDiv.appendChild(iconHide)
 
 const modalHide = document.createElement('button')
-modalHide.textContent = 'Скрыть пин со страницы'
+modalHide.textContent = ' Скрыть пин со страницы'
 modalHide.classList.add('buttonModal')
 modalHide.id = 'addHide'
 twoDiv.append(modalHide)
@@ -179,10 +188,10 @@ modalOne.textContent = 'Доска 1'
 modalOne.classList.add('buttonBoard')
 menuContent.appendChild(modalOne)
 
-const modalTwy = document.createElement('button')
-modalTwy.textContent = 'Доска 2'
-modalTwy.classList.add('buttonBoard')
-menuContent.appendChild(modalTwy)
+const modalTwo = document.createElement('button')
+modalTwo.textContent = 'Доска 2'
+modalTwo.classList.add('buttonBoard')
+menuContent.appendChild(modalTwo)
 
 const modalThree = document.createElement('button')
 modalThree.textContent = 'Доска 3'
@@ -206,6 +215,7 @@ menuClaimText.classList.add('menuClaimText')
 menuClaim.appendChild(menuClaimText)
 
 const div = document.createElement('div')
+div.classList.add('divLabel')
 menuClaim.appendChild(div)
 
 const input = document.createElement('input')
@@ -223,6 +233,7 @@ label.setAttribute("name", "claimForm")
 div.appendChild(label)
 
 const divOne = document.createElement('div')
+divOne.classList.add('divLabel')
 menuClaim.appendChild(divOne)
 
 const inputOne = document.createElement('input')
@@ -240,6 +251,7 @@ labelOne.setAttribute("name", "claimForm")
 divOne.appendChild(labelOne)
 
 const divTwo = document.createElement('div')
+divTwo.classList.add('divLabel')
 menuClaim.appendChild(divTwo)
 
 const inputTwo = document.createElement('input')
@@ -257,6 +269,7 @@ labelTwo.setAttribute("name", "claimForm")
 divTwo.appendChild(labelTwo)
 
 const divThree = document.createElement('div')
+divThree.classList.add('divLabel')
 menuClaim.appendChild(divThree)
 
 const inputThree = document.createElement('input')
@@ -289,20 +302,19 @@ menuButtonAdd.appendChild(send)
 
 // ---------- СБОРКА ----------
 
-// claimContent.append(menuClaim, menuButtonAdd)
-// container.append(buttonAll, myWindow, windowMenu, windowClaim)
 
 gallery.append(card);
 claimContent.append(menuClaim, menuButtonAdd)
-divContainer.append(buttonAll, myWindow, windowMenu, windowClaim)
+divContainer.append( myWindow, windowMenu, windowClaim)
 container.append(header, gallery, divContainer);
 main.append(container);
 
 // Получаем элементы DOM
 const modal = document.getElementById("myModal");
 const openBtn = document.getElementById("openModalBtn");
-const modalMenu = document.getElementById("myMenu")
-const claimAdd= document.getElementById("myClaim")
+const modalMenu = document.getElementById("myMenu");
+const claimAdd = document.getElementById("myClaim");
+const claimImageAdd = document.getElementById("claimImage")
 
 
 // Открываем модальное окно при клике на кнопку
@@ -323,6 +335,17 @@ modalHide.onclick = function() {
 claim.onclick = function() {
     modal.style.display = "none";
     claimAdd.style.display = "block"
+}
+
+cancel.onclick = function() {
+    claimAdd.style.display = "none"
+}
+send.onclick = function() {
+    claimImageAdd.style.display = "block"
+    claimAdd.style.display = "none"
+}
+claimImage.onclick = function() {
+    claimImageAdd.style.display = "none"
 }
 
 // Закрываем модальное окно при клике вне его области
