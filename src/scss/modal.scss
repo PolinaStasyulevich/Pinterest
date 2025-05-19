@@ -1,4 +1,5 @@
 // общее оформление модальных окон
+
  /* Стили для модального окна */
 .modal {
     display: none; /* По умолчанию скрыто */
@@ -38,6 +39,7 @@
     font-size: 18px;
     color: #000000;
     font-weight: 700;
+    margin-right: 10px;
 }
 
 .fa-solid.fa-plus::before{
