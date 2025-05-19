@@ -68,3 +68,47 @@
     transform: translateY(0);
 }
 
+=======
+.windowMenu {
+    display: none; /* По умолчанию скрыто */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4); /* Полупрозрачный черный фон */
+}
+
+.menuContent {
+    margin: 15% auto;
+    background-color: rgb(255, 255, 255);
+    width: 345px;
+    padding: 30px 40px;
+    border: 4px solid rgb(145, 145, 145);
+    border-radius: 25px;
+}
+
+.menuText {
+    font-weight: 800;
+    font-size: 24px;
+    text-align: center;
+}
+
+.buttonBoard {
+    font-weight: 700;
+    font-size: 16px;
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    padding: 10px 10px;
+    margin: 5px 0;
+    border: 0;
+    width: 250px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.buttonBoard:hover {
+    background-color: #E9E9E9;
+}

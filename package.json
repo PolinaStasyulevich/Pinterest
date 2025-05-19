@@ -19,8 +19,8 @@
   },
   "homepage": "https://github.com/PolinaStasyulevich/Pinterest#readme",
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.14.4",
-    "parcel": "^2.14.4",
+    "@parcel/transformer-sass": "^2.15.0",
+    "parcel": "^2.15.0",
     "sass": "^1.88.0"
   },
   "dependencies": {
