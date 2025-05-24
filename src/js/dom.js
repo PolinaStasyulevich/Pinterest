@@ -321,18 +321,11 @@ const send = document.createElement('button')
 send.textContent = 'send'
 send.classList.add('send')
 menuButtonAdd.appendChild(send)
+
+
+
 //==================================================
 
-// Сохраняем последний просмотренный элемент
-card.addEventListener('click', () => {
-    localStorage.setItem('lastViewed', description.textContent);
-});
-
-// Проверяем, есть ли сохранённый просмотренный элемент
-const lastViewed = localStorage.getItem('lastViewed');
-if (lastViewed) {
-    description.textContent = `Последний просмотр: ${lastViewed}`;
-}
 
 
 
