@@ -138,7 +138,7 @@ description.textContent = 'Интерьер';
 
 
 meta.append(avatar, description);
-card.append(image, meta, claimImage);
+card.append(image, meta);
 
 //==================================================
 
@@ -333,7 +333,7 @@ gallery.append(card);
 claimContent.append(menuClaim, menuButtonAdd)
 divContainer.append( myWindow, windowMenu, windowClaim)
 container.append(header, gallery, divContainer);
-main.append(container);
+main.append(container, claimImage);
 
 // Получаем элементы DOM
 const modal = document.getElementById("myModal");
