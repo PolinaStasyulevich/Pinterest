@@ -3,8 +3,8 @@
 #main{
     position: relative;
     width: 100%;
-    height: 100vh;
-     .claimImage {
+    min-height: 100vh;
+    .claimImage {
                 position: absolute;
                 display: none;
                 top: 0;
@@ -18,7 +18,7 @@
                 box-sizing: border-box;
                 text-align: center;
                 padding-top: 300px;
-            }
+     }
 }
 
 .header{
