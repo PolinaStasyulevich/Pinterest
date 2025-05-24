@@ -41,6 +41,10 @@ search.addEventListener('input', () => {
 
 searchWrapper.append(iconSearch, search);
 
+
+
+// ---------- БУРГЕР-МЕНЮ ----------
+
 const boardWrapper = document.createElement('div');
 boardWrapper.classList.add('board-wrapper');
 
@@ -51,6 +55,7 @@ boardBtn.textContent = savedBoard ? `Выбрано: ${savedBoard} ▼` : 'Вы�
 
 const boardList = document.createElement('ul');
 boardList.classList.add('board-list');
+
 const boards = ['Доска 1', 'Доска 2', 'Доска 3'];
 boards.forEach(board => {
     const listItem = document.createElement('li');
@@ -70,6 +75,9 @@ boardBtn.addEventListener('click', () => {
 
 boardWrapper.append(boardBtn, boardList);
 header.append(logo, searchWrapper, boardWrapper);
+
+
+
 
 // ---------- GALLERY ----------
 const gallery = document.createElement('div');
@@ -163,6 +171,7 @@ menuClaimText.textContent = 'Жалоба на пин';
 menuClaimText.classList.add('menuClaimText');
 menuClaim.appendChild(menuClaimText);
 
+
 const div = document.createElement('div');
 div.classList.add('divLabel');
 menuClaim.appendChild(div);
@@ -251,6 +260,23 @@ menuButtonAdd.appendChild(send);
 claimContent.append(menuClaim, menuButtonAdd);
 divContainer.append(myWindow, windowMenu, windowClaim);
 
+
+// ---------- ГЛОБАЛЬНЫЙ CLAIMIMAGE ----------
+
+const claimImage = document.createElement('div');
+claimImage.classList.add('claimImage');
+claimImage.id = 'claimImage';
+
+const claimHeading = document.createElement('h2');
+claimHeading.textContent = 'Жалоба отправлена';
+claimHeading.classList.add('claimHeading');
+claimImage.appendChild(claimHeading);
+
+const cliamDescription = document.createElement('p');
+cliamDescription.textContent = 'Спасибо! Ваши отзывы помогают нам заботиться о безопасности сообщества Pinterest.';
+cliamDescription.classList.add('cliamDescription');
+claimImage.appendChild(cliamDescription);
+
 // Загрузка карточек из MockAPI
 function loadPhotos() {
     fetch('https://6829fe1fab2b5004cb357623.mockapi.io/photos')
@@ -271,19 +297,7 @@ function loadPhotos() {
                 });
                 image.append(menuButton);
 
-                const claimImage = document.createElement('div');
-                claimImage.classList.add('claimImage');
-                claimImage.id = 'claimImage';
-
-                const claimHeading = document.createElement('h2');
-                claimHeading.textContent = 'Жалоба отправлена';
-                claimHeading.classList.add('claimHeading');
-                claimImage.appendChild(claimHeading);
-
-                const cliamDescription = document.createElement('p');
-                cliamDescription.textContent = 'Спасибо! Ваши отзывы помогают нам заботиться о безопасности сообщества Pinterest.';
-                cliamDescription.classList.add('cliamDescription');
-                claimImage.appendChild(cliamDescription);
+               
 
                 const meta = document.createElement('div');
                 meta.classList.add('card-meta');
@@ -306,7 +320,7 @@ function loadPhotos() {
 loadPhotos();
 
 container.append(header, gallery, divContainer);
-main.append(container);
+main.append(container, claimImage);
 
 add.onclick = function() {
     myWindow.style.display = "none";
@@ -336,5 +350,8 @@ document.addEventListener('click', function(event) {
     }
     if (event.target === windowClaim) {
         windowClaim.style.display = 'none';
+    }
+    if (event.target === claimImage) {
+        claimImage.style.display = 'none';
     }
 });
