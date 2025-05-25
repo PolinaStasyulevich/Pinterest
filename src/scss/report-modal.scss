@@ -34,18 +34,22 @@
 
 .label {
     font-size: 17px;
+    margin-left: 10px;
 }
 
 .menuClaim {
     margin-bottom: 20px;
 }
 
-.cancel {
+.cancel, .send {
+    padding: 0;
+    line-height: 50px;
     border: 0;
-    padding: 15px 10px;
+    width: 120px;
     margin-right: 25px;
     border-radius: 18px;
-    background-color: #e9e9e9;
+    background-color: #cfcfcf;
+    color: black;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
@@ -55,16 +59,8 @@
     background-color: #cfcfcf;
 }
 
-.send {
-    border: 0;
-    padding: 15px 17px;
-    border-radius: 18px;
-    background-color: #E9E9E9;
-    font-size: 16px;
-    font-weight: 700;
-    cursor: pointer;
-}
 
 .send:hover {
-    background-color: #ee3737;
+    background-color: #e60023;
+    color: white;
 }

@@ -14,7 +14,7 @@
 }
 
 .modalContent{
-    margin: 15% auto;
+    margin: 25% auto;
     background-color: rgb(255, 255, 255);
     width: 300px;
     padding: 30px 20px;
@@ -24,7 +24,8 @@
 
 .divModal {
     display: flex;
-    padding: 15px 10px;
+    align-items: center;
+    padding: 15px 0;
 }
 
 .divModal:hover {
@@ -36,22 +37,17 @@
 }
 
 .iconModal{
-    font-size: 18px;
+    // font-size: 18px;
     color: #000000;
     font-weight: 700;
-    margin-right: 10px;
-}
-
-.fa-solid.fa-plus::before{
-    content: '\2b';
-}
-
-.fa-regular.fa-eye-slash::before {
-    content: '\f070';
-}
-
-.fa-solid.fa-trash::before {
-    content: '\f1f8';
+    // margin-right: 10px;
+    // margin-top: 8px;
+    font-size: 24px;
+  width: 50px;
+  height: 24px;
+  line-height: 1;
+  text-align: center;
+  display: inline-block;
 }
 
 .buttonModal {
@@ -61,4 +57,5 @@
     cursor: pointer;
     width: 300px;
     border: 0;
+    color: black;
 }

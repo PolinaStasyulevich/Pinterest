@@ -79,7 +79,7 @@ boardBtn.textContent = savedBoard ? `Выбрано: ${savedBoard} ▼` : 'Вы�
 const boardList = document.createElement('ul');
 boardList.classList.add('board-list');
 
-const boards = ['City', 'Food', 'Nature'];
+const boards = ['Города', 'Еда', 'Природа'];
 boards.forEach((board, index) => {
     const listItem = document.createElement('li');
     listItem.textContent = board;
@@ -185,7 +185,7 @@ menuText.textContent = 'Меню';
 menuText.classList.add('menuText');
 menuContent.appendChild(menuText);
 
-['Доска 1', 'Доска 2', 'Доска 3'].forEach(name => {
+['Города', 'Еда', 'Природа'].forEach(name => {
     const btn = document.createElement('button');
     btn.textContent = name;
     btn.classList.add('buttonBoard');
@@ -217,14 +217,13 @@ const input = document.createElement('input');
 input.classList.add('input');
 input.type = 'radio';
 input.id = 'claimLabel';
-input.setAttribute("name", "claimForm");
-div.appendChild(input);
+input.name = 'claimLabel'
+div.appendChild(input)
 
 const label = document.createElement('label');
 label.textContent = 'Спам';
 label.classList.add('label');
 label.htmlFor = 'claimLabel';
-label.setAttribute("name", "claimForm");
 div.appendChild(label);
 
 const divOne = document.createElement('div');
@@ -234,15 +233,14 @@ menuClaim.appendChild(divOne);
 const inputOne = document.createElement('input');
 inputOne.classList.add('input');
 inputOne.type = 'radio';
-inputOne.id = 'claimLabel';
-inputOne.setAttribute("name", "claimForm");
+inputOne.id = 'claimLabel2';
+inputOne.name = 'claimLabel'
 divOne.appendChild(inputOne);
 
 const labelOne = document.createElement('label');
 labelOne.textContent = 'Опасные товары';
 labelOne.classList.add('label');
-labelOne.htmlFor = 'claimLabel';
-labelOne.setAttribute("name", "claimForm");
+labelOne.htmlFor = 'claimLabel2';
 divOne.appendChild(labelOne);
 
 const divTwo = document.createElement('div');
@@ -252,15 +250,14 @@ menuClaim.appendChild(divTwo);
 const inputTwo = document.createElement('input');
 inputTwo.classList.add('input');
 inputTwo.type = 'radio';
-inputTwo.id = 'claimLabel';
-inputTwo.setAttribute("name", "claimForm");
+inputTwo.id = 'claimLabel3';
+inputTwo.name = 'claimLabel'
 divTwo.appendChild(inputTwo);
 
 const labelTwo = document.createElement('label');
 labelTwo.textContent = 'Нарушение конфиденциальности';
 labelTwo.classList.add('label');
-labelTwo.htmlFor = 'claimLabel';
-labelTwo.setAttribute("name", "claimForm");
+labelTwo.htmlFor = 'claimLabel3';
 divTwo.appendChild(labelTwo);
 
 const divThree = document.createElement('div');
@@ -270,27 +267,26 @@ menuClaim.appendChild(divThree);
 const inputThree = document.createElement('input');
 inputThree.classList.add('input');
 inputThree.type = 'radio';
-inputThree.id = 'claimLabel';
-inputThree.setAttribute("name", "claimForm");
+inputThree.id = 'claimLabel4';
+inputThree.name = 'claimLabel'
 divThree.appendChild(inputThree);
 
 const labelThree = document.createElement('label');
 labelThree.textContent = 'Сцены насилия';
 labelThree.classList.add('label');
-labelThree.htmlFor = 'claimLabel';
-labelThree.setAttribute("name", "claimForm");
+labelThree.htmlFor = 'claimLabel4';
 divThree.appendChild(labelThree);
 
 const menuButtonAdd = document.createElement('div');
 menuButtonAdd.classList.add('menuButtonAdd');
 
 const cancel = document.createElement('button');
-cancel.textContent = 'cancel';
+cancel.textContent = 'Отмена';
 cancel.classList.add('cancel');
 menuButtonAdd.appendChild(cancel);
 
 const send = document.createElement('button');
-send.textContent = 'send';
+send.textContent = 'Отправить';
 send.classList.add('send');
 menuButtonAdd.appendChild(send);
 
