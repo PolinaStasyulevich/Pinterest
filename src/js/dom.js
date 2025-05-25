@@ -20,6 +20,9 @@ text.classList.add('logo-text');
 text.textContent = 'Pinterest';
 
 logo.append(iconLogo, text);
+logo.addEventListener('click', function() {
+    gallery.classList.remove('boardHidden')
+})
 
 const searchWrapper = document.createElement('div');
 searchWrapper.classList.add('search-wrapper');
@@ -43,6 +46,26 @@ searchWrapper.append(iconSearch, search);
 
 
 
+
+const boardCity = document.createElement('div')
+boardCity.id = 'board-0'
+boardCity.classList.add('boardHidden')
+boardCity.textContent = 'city'
+
+const boardFood = document.createElement('div')
+boardFood.id = 'board-1'
+boardFood.classList.add('boardHidden')
+boardFood.textContent =' food'
+
+const boardNature = document.createElement('div')
+boardNature.id = 'board-2'
+boardNature.classList.add('boardHidden')
+boardNature.textContent = 'nature'
+
+
+
+
+
 // ---------- БУРГЕР-МЕНЮ ----------
 
 const boardWrapper = document.createElement('div');
@@ -56,15 +79,28 @@ boardBtn.textContent = savedBoard ? `Выбрано: ${savedBoard} ▼` : 'Вы�
 const boardList = document.createElement('ul');
 boardList.classList.add('board-list');
 
-const boards = ['Доска 1', 'Доска 2', 'Доска 3'];
-boards.forEach(board => {
+const boards = ['City', 'Food', 'Nature'];
+boards.forEach((board, index) => {
     const listItem = document.createElement('li');
     listItem.textContent = board;
     listItem.classList.add('board-item');
+    listItem.dataset.target = `board-${index}`
     listItem.addEventListener('click', () => {
         localStorage.setItem('selectedBoard', board);
         boardBtn.textContent = `Выбрано: ${board} ▼`;
         boardList.classList.remove('show');
+
+        // Скрываем все доски
+        document.querySelectorAll('[id^="board-"]').forEach(boardEl => {
+            boardEl.classList.add('boardHidden');
+        });
+
+        // Показываем только выбранную
+        const menuLiAttribute = listItem.getAttribute('data-target');
+        document.getElementById(menuLiAttribute).classList.remove('boardHidden');
+
+        // Скрываем галерею
+        gallery.classList.add('boardHidden');
     });
     boardList.appendChild(listItem);
 });
@@ -82,6 +118,7 @@ header.append(logo, searchWrapper, boardWrapper);
 // ---------- GALLERY ----------
 const gallery = document.createElement('div');
 gallery.classList.add('gallery');
+
 
 // ---------- МОДАЛКИ И КАРТОЧКИ ----------
 const divContainer = document.createElement('div');
@@ -319,7 +356,7 @@ function loadPhotos() {
 
 loadPhotos();
 
-container.append(header, gallery, divContainer);
+container.append(header, gallery, divContainer, boardCity, boardFood, boardNature);
 main.append(container, claimImage);
 
 add.onclick = function() {
