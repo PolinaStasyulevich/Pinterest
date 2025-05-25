@@ -21,7 +21,10 @@ text.textContent = 'Pinterest';
 
 logo.append(iconLogo, text);
 logo.addEventListener('click', function() {
-    gallery.classList.remove('boardHidden')
+    gallery.style.display = "flex"
+    boardCity.style.display = "none"
+    boardFood.style.display = "none"
+    boardNature.style.display = "none"
 })
 
 const searchWrapper = document.createElement('div');
@@ -49,18 +52,15 @@ searchWrapper.append(iconSearch, search);
 
 const boardCity = document.createElement('div')
 boardCity.id = 'board-0'
-boardCity.classList.add('boardHidden')
-boardCity.textContent = 'city'
+boardCity.style.display = "none"
 
 const boardFood = document.createElement('div')
 boardFood.id = 'board-1'
-boardFood.classList.add('boardHidden')
-boardFood.textContent =' food'
+boardFood.style.display = "none"
 
 const boardNature = document.createElement('div')
 boardNature.id = 'board-2'
-boardNature.classList.add('boardHidden')
-boardNature.textContent = 'nature'
+boardNature.style.display = "none"
 
 
 
@@ -92,15 +92,15 @@ boards.forEach((board, index) => {
 
         // Скрываем все доски
         document.querySelectorAll('[id^="board-"]').forEach(boardEl => {
-            boardEl.classList.add('boardHidden');
+            boardEl.style.display = "none"
         });
 
         // Показываем только выбранную
         const menuLiAttribute = listItem.getAttribute('data-target');
-        document.getElementById(menuLiAttribute).classList.remove('boardHidden');
+        document.getElementById(menuLiAttribute).style.display = "flex"
 
         // Скрываем галерею
-        gallery.classList.add('boardHidden');
+        gallery.style.display = "none"
     });
     boardList.appendChild(listItem);
 });
@@ -185,10 +185,21 @@ menuText.textContent = 'Меню';
 menuText.classList.add('menuText');
 menuContent.appendChild(menuText);
 
-['Города', 'Еда', 'Природа'].forEach(name => {
+['Города', 'Еда', 'Природа'].forEach((name, index) => {
     const btn = document.createElement('button');
     btn.textContent = name;
     btn.classList.add('buttonBoard');
+
+    btn.addEventListener('click', () => {
+        if (selectedCardData) {
+            const board = document.getElementById(`board-${index}`);
+            const card = createCard(selectedCardData);
+            board.appendChild(card);
+            selectedCardData = null;
+            windowMenu.style.display = 'none';
+        }
+    });
+
     menuContent.appendChild(btn);
 });
 
@@ -310,47 +321,65 @@ cliamDescription.textContent = 'Спасибо! Ваши отзывы помог
 cliamDescription.classList.add('cliamDescription');
 claimImage.appendChild(cliamDescription);
 
-// Загрузка карточек из MockAPI
+let selectedCardData = null;
+let selectedCardElement = null;
+
+function createCard(item) {
+    const card = document.createElement('div');
+    card.classList.add('card');
+
+    const image = document.createElement('div');
+    image.classList.add('card-image');
+    image.style.backgroundImage = `url(${item.image})`;
+
+    const menuButton = document.createElement('i');
+    menuButton.classList.add('fa-solid', 'fa-ellipsis', 'card-menu-button');
+    menuButton.addEventListener('click', () => {
+        myWindow.style.display = 'block';
+        selectedCardData = item; // сохраняем, что выбрана именно эта карточка
+    });
+
+    menuButton.addEventListener('click', () => {
+        myWindow.style.display = 'block';
+        selectedCardData = item;
+        selectedCardElement = card; // ← сохраняем DOM
+    });
+
+    image.append(menuButton);
+
+    const meta = document.createElement('div');
+    meta.classList.add('card-meta');
+
+    const avatar = document.createElement('div');
+    avatar.classList.add('avatar');
+    avatar.style.backgroundImage = `url(${item.avatar})`;
+
+    const description = document.createElement('p');
+    description.classList.add('description');
+    description.textContent = item.description;
+
+    meta.append(avatar, description);
+    card.append(image, meta);
+
+    return card;
+}
+
 function loadPhotos() {
     fetch('https://6829fe1fab2b5004cb357623.mockapi.io/photos')
         .then(response => response.json())
         .then(data => {
             data.forEach(item => {
-                const card = document.createElement('div');
-                card.classList.add('card');
-
-                const image = document.createElement('div');
-                image.classList.add('card-image');
-                image.style.backgroundImage = `url(${item.image})`;
-
-                const menuButton = document.createElement('i');
-                menuButton.classList.add('fa-solid', 'fa-ellipsis', 'card-menu-button');
-                menuButton.addEventListener('click', () => {
-                    myWindow.style.display = 'block';
-                });
-                image.append(menuButton);
-
-               
-
-                const meta = document.createElement('div');
-                meta.classList.add('card-meta');
-
-                const avatar = document.createElement('div');
-                avatar.classList.add('avatar');
-                avatar.style.backgroundImage = `url(${item.avatar})`;
-
-                const description = document.createElement('p');
-                description.classList.add('description');
-                description.textContent = item.description;
-
-                meta.append(avatar, description);
-                card.append(image, meta, claimImage);
+                const card = createCard(item);
                 gallery.appendChild(card);
             });
         });
 }
 
 loadPhotos();
+
+
+
+
 
 container.append(header, gallery, divContainer, boardCity, boardFood, boardNature);
 main.append(container, claimImage);
@@ -361,6 +390,9 @@ add.onclick = function() {
 }
 modalHide.onclick = function() {
     myWindow.style.display = "none";
+    if (selectedCardElement) {
+        selectedCardElement.style.display = "none";
+    }
 }
 claim.onclick = function() {
     myWindow.style.display = "none";
