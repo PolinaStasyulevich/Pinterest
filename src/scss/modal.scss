@@ -1,6 +1,5 @@
 // общее оформление модальных окон
 
- /* Стили для модального окна */
 .modal {
     display: none; /* По умолчанию скрыто */
     position: fixed;
@@ -39,11 +38,8 @@
 }
 
 .iconModal{
-    // font-size: 18px;
     color: #000000;
     font-weight: 700;
-    // margin-right: 10px;
-    // margin-top: 8px;
     font-size: 24px;
     width: 50px;
     height: 24px;
