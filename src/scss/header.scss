@@ -29,6 +29,9 @@
             width: 90%;
             padding-left: 20px;
         }
+        .search:focus{
+            outline: none;
+        }
     }
     .board-button{
         line-height: 50px;
