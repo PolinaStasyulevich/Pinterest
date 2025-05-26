@@ -1,27 +1,5 @@
 // верхняя панель с логотипом, поиском, выбором доски
 
-#main{
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    .claimImage {
-                position: absolute;
-                display: none;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.9);
-                color: white;
-                transition: opacity 0.3s ease;
-                padding: 20px;
-                box-sizing: border-box;
-                text-align: center;
-                padding-top: 300px;
-                font-family: "Noto Sans", sans-serif;
-     }
-}
-
 .header{
     display: flex;
     justify-content: space-between;
@@ -51,9 +29,8 @@
             width: 90%;
             padding-left: 20px;
         }
-
-        .search:focus {
-            outline: none;         
+        .search:focus{
+            outline: none;
         }
     }
     .board-button{
@@ -67,48 +44,3 @@
 }
 
 
-
-
-.gallery{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    row-gap: 30px;
-}
-
-.card{
-    width: 220px;
-    height: 400px;  
-        .card-image{
-            width: 100%;
-            height: 360px;
-            background-size: cover;
-            position: relative;
-            margin-bottom: 10px;
-        }
-        .card-menu-button{
-            position: absolute;
-            right: 5px;
-            bottom: 15px;
-            width: 30px;
-            line-height: 30px;
-            text-align: center;
-            border-radius: 50%;
-            background-color: #ffffff;
-            cursor: pointer;            
-        }   
-        .card-meta{
-            display: flex;
-            align-items: center;
-            .avatar{
-                width: 30px;
-                height: 30px;
-                border-radius: 50px;
-                background-size: cover;
-                background-position: center;
-            }
-            .description{
-                margin-left: 10px;
-            }
-        }
-}

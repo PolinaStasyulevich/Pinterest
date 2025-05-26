@@ -1,1 +1,37 @@
 // стили одной фотографии (карточки с описанием, подписью, аватаркой)
+.card{
+    width: 220px;
+    height: 400px;  
+        .card-image{
+            width: 100%;
+            height: 340px;
+            background-size: cover;
+            position: relative;
+            margin-bottom: 10px;
+        }
+        .card-menu-button{
+            position: absolute;
+            right: 5px;
+            bottom: 15px;
+            width: 30px;
+            line-height: 30px;
+            text-align: center;
+            border-radius: 50%;
+            background-color: #ffffff;
+            cursor: pointer;            
+        }   
+        .card-meta{
+            display: flex;
+            align-items: center;
+            .avatar{
+                width: 30px;
+                height: 30px;
+                border-radius: 50px;
+                background-size: cover;
+                background-position: center;
+            }
+            .description{
+                margin-left: 10px;
+            }
+        }
+}
