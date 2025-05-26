@@ -43,6 +43,27 @@ if (savedSearch) search.value = savedSearch;
 
 search.addEventListener('input', () => {
     localStorage.setItem('searchQuery', search.value);
+
+    const query = search.value.trim().toLowerCase();
+    //search.value — берёт текст, который пользователь ввёл в строку поиска.
+    //.trim() — удаляет пробелы в начале и конце (например, " еда " → "еда").
+    //.toLowerCase() — приводит строку к нижнему регистру, чтобы поиск не зависел от регистра.
+    const cards = document.querySelectorAll('.card');
+
+    cards.forEach(card => {
+        const tags = card.dataset.tags || '';
+        //Берёт значение data-tags, Если его нет, подставляется пустая строка '', чтобы не было ошибки
+        //"#завтрак #италия #еда"
+        if (!query || tags.includes('#' + query)) {
+            //если строка поиска пуста (то есть пользователь ничего не ввёл), тогда условие true, и мы показываем все карточки
+            // если в тегах есть искомый хештег
+            card.style.removeProperty('display'); //удаляет свойство display none, то есть карточки видны
+        } else {
+            card.style.display = 'none';
+        }
+    });
+
+
 });
 
 searchWrapper.append(iconSearch, search);
@@ -328,6 +349,10 @@ function createCard(item) {
     const card = document.createElement('div');
     card.classList.add('card');
 
+    card.dataset.tags = item.tags.join(' ').toLowerCase(); 
+    // получится так
+    //<div class="card" data-tags="#завтрак #италия #еда">
+
     const image = document.createElement('div');
     image.classList.add('card-image');
     image.style.backgroundImage = `url(${item.image})`;
@@ -335,12 +360,12 @@ function createCard(item) {
     const menuButton = document.createElement('i');
     menuButton.classList.add('fa-solid', 'fa-ellipsis', 'card-menu-button');
     menuButton.addEventListener('click', () => {
-        myWindow.style.display = 'block';
+        myWindow.style.display = 'flex';
         selectedCardData = item; // сохраняем, что выбрана именно эта карточка
     });
 
     menuButton.addEventListener('click', () => {
-        myWindow.style.display = 'block';
+        myWindow.style.display = 'flex';
         selectedCardData = item;
         selectedCardElement = card; // ← сохраняем DOM
     });
@@ -386,7 +411,7 @@ main.append(container, claimImage);
 
 add.onclick = function() {
     myWindow.style.display = "none";
-    windowMenu.style.display = "block"
+    windowMenu.style.display = "flex"
 }
 modalHide.onclick = function() {
     myWindow.style.display = "none";
@@ -396,7 +421,7 @@ modalHide.onclick = function() {
 }
 claim.onclick = function() {
     myWindow.style.display = "none";
-    windowClaim.style.display = "block"
+    windowClaim.style.display = "flex"
 }
 cancel.onclick = function() {
     windowClaim.style.display = "none"

@@ -10,10 +10,12 @@
     height: 100%;
     overflow: auto;
     background-color: rgba(0,0,0,0.4); /* Полупрозрачный черный фон */
+
+    justify-content: center;
+    align-items: center;
 }
 
 .claimContent {    
-    margin: 15% auto;
     background-color: rgb(255, 255, 255);
     width: 400px;
     padding: 30px 40px;

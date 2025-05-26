@@ -78,10 +78,13 @@
     height: 100%;
     overflow: auto;
     background-color: rgba(0,0,0,0.4); /* Полупрозрачный черный фон */
+
+
+    justify-content: center;
+    align-items: center; /* вот это — для вертикального центрирования */
 }
 
 .menuContent {
-    margin: 15% auto;
     background-color: rgb(255, 255, 255);
     width: 345px;
     padding: 30px 40px;
@@ -93,6 +96,7 @@
     font-weight: 800;
     font-size: 24px;
     text-align: center;
+    margin-bottom: 20px;
 }
 
 .buttonBoard {

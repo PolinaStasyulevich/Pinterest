@@ -11,10 +11,12 @@
     height: 100%;
     overflow: auto;
     background-color: rgba(0,0,0,0.4); /* Полупрозрачный черный фон */
+
+    justify-content: center;
+    align-items: center; /* вот это — для вертикального центрирования */
 }
 
 .modalContent{
-    margin: 25% auto;
     background-color: rgb(255, 255, 255);
     width: 300px;
     padding: 30px 20px;
@@ -43,11 +45,11 @@
     // margin-right: 10px;
     // margin-top: 8px;
     font-size: 24px;
-  width: 50px;
-  height: 24px;
-  line-height: 1;
-  text-align: center;
-  display: inline-block;
+    width: 50px;
+    height: 24px;
+    line-height: 1;
+    text-align: center;
+    display: inline-block;
 }
 
 .buttonModal {
