@@ -1,0 +1,5 @@
+//положение карточек в досках
+#board-0, #board-1, #board-2{
+    display: flex;
+    justify-content: space-between;
+}

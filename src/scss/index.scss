@@ -1,0 +1,24 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+@import '../scss/fonts';
+@import '../scss/header.scss';
+@import '../scss/gallery.scss';
+@import '../scss/card.scss';
+@import '../scss/modal.scss';
+@import '../scss/board-modal.scss';
+@import '../scss/report-modal.scss';
+@import '../scss/dropdown.scss';
+@import '../scss/boards.scss';
+@import '../scss/claim.scss';
+
+.container{
+    max-width: 1170px;
+    padding: 15px 15px 0;
+    margin: auto;
+    font-family: "Noto Sans", sans-serif;
+}

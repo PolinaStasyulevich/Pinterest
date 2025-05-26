@@ -1,0 +1,69 @@
+// модальное окно с пунктами "пожаловаться"
+.windowClaim {
+    display: none; 
+    /* По умолчанию скрыто */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4); /* Полупрозрачный черный фон */
+
+    justify-content: center;
+    align-items: center;
+}
+
+.claimContent {    
+    background-color: rgb(255, 255, 255);
+    width: 400px;
+    padding: 30px 40px;
+    border: 4px solid rgb(144, 142, 138);
+    border-radius: 25px;
+    font-family: "Noto Sans", sans-serif;
+}
+
+.menuClaimText {
+    text-align: center;
+    font-weight: 900;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.divLabel {
+    margin-bottom: 5px;
+}
+
+.label {
+    font-size: 17px;
+    margin-left: 10px;
+}
+
+.menuClaim {
+    margin-bottom: 20px;
+}
+
+.cancel, .send {
+    padding: 0;
+    line-height: 50px;
+    border: 0;
+    width: 120px;
+    margin-right: 25px;
+    border-radius: 18px;
+    background-color: #cfcfcf;
+    color: black;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.cancel:hover {
+    background-color: #cfcfcf;
+}
+
+
+.send:hover {
+    background-color: #e60023;
+    color: white;
+}
