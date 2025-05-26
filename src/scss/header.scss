@@ -44,3 +44,10 @@
 }
 
 
+@media (max-width: 768px) {
+    .header{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+}
